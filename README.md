@@ -5,7 +5,7 @@ to modify their servers without learning Java. It can also be useful if you
 for prototyping etc.
 
 This Github fork of Skript is based on Mirreski's improvements which was built
-on Njol's original Skript.
+on Njol's original Skript. 
 
 ## Requirements
 Skript requires **Spigot** to work. You heard it right, Bukkit does *not* work.
