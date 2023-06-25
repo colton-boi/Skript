@@ -18,6 +18,9 @@
  */
 package ch.njol.skript.expressions;
 
+import ch.njol.skript.lang.Expression;
+import ch.njol.skript.lang.SkriptParser;
+import ch.njol.util.Kleenean;
 import org.bukkit.event.Event;
 import org.eclipse.jdt.annotation.Nullable;
 
@@ -31,14 +34,27 @@ import ch.njol.skript.lang.ExpressionType;
 import ch.njol.skript.util.Date;
 import ch.njol.skript.util.Timespan;
 
-@Name("Time Since")
-@Description("The time that has passed since a date. If the given date is in the future, a value will not be returned.")
-@Examples("send \"%time since 5 minecraft days ago% has passed since 5 minecraft days ago!\" to player")
-@Since("2.5")
-public class ExprTimeSince extends SimplePropertyExpression<Date, Timespan> {
+@Name("Time Since/Until Dates")
+@Description("The time since a date has passed or the time until a date will pass.")
+@Examples({
+	"send \"%time since 5 minecraft days ago% has passed since 5 minecraft days ago!\" to player",
+	"send \"%time until {countdownEnd}% remaining of the countdown!\" to player"
+})
+@Since("2.5, INSERT VERSION (time until)")
+public class ExprTimeDifference extends SimplePropertyExpression<Date, Timespan> {
 
 	static {
-		Skript.registerExpression(ExprTimeSince.class, Timespan.class, ExpressionType.PROPERTY, "[the] time since %dates%");
+		Skript.registerExpression(ExprTimeDifference.class, Timespan.class, ExpressionType.PROPERTY,
+			"[the] time since %dates%",
+			"[the] [remaining] time [remaining] until %dates%");
+	}
+
+	private boolean sinceDate;
+
+	@Override
+	public boolean init(final Expression<?>[] exprs, final int matchedPattern, final Kleenean isDelayed, final SkriptParser.ParseResult parseResult) {
+		sinceDate = matchedPattern == 0;
+		return true;
 	}
 
 	@Override
@@ -53,7 +69,7 @@ public class ExprTimeSince extends SimplePropertyExpression<Date, Timespan> {
 		 * A value of 0 indicates that the new date is the SAME as the current date.
 		 * A value greater than 0 indicates that the new date is AFTER the current date.
 		 */
-		if (date.compareTo(now) < 1)
+		if (sinceDate ? (date.compareTo(now) < 1) : (date.compareTo(now) > -1))
 			return date.difference(now);
 		return null;
 	}
@@ -65,12 +81,12 @@ public class ExprTimeSince extends SimplePropertyExpression<Date, Timespan> {
 
 	@Override
 	protected String getPropertyName() {
-		return "time since";
+		return "time " + (sinceDate ? "since" : "until");
 	}
 
 	@Override
 	public String toString(final @Nullable Event e, final boolean debug) {
-		return "the time since " + getExpr().toString(e, debug);
+		return "the time " + (sinceDate ? "since " : "until ") + getExpr().toString(e, debug);
 	}
 
 }
