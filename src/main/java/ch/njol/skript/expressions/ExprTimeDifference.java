@@ -19,7 +19,7 @@
 package ch.njol.skript.expressions;
 
 import ch.njol.skript.lang.Expression;
-import ch.njol.skript.lang.SkriptParser;
+import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.util.Kleenean;
 import org.bukkit.event.Event;
 import org.eclipse.jdt.annotation.Nullable;
@@ -34,11 +34,11 @@ import ch.njol.skript.lang.ExpressionType;
 import ch.njol.skript.util.Date;
 import ch.njol.skript.util.Timespan;
 
-@Name("Time Since/Until Dates")
+@Name("Time Since/Until")
 @Description("The time since a date has passed or the time until a date will pass.")
 @Examples({
 	"send \"%time since 5 minecraft days ago% has passed since 5 minecraft days ago!\" to player",
-	"send \"%time until {countdownEnd}% remaining of the countdown!\" to player"
+	"send \"%time until {countdown::ends}% until the game begins!\" to player"
 })
 @Since("2.5, INSERT VERSION (time until)")
 public class ExprTimeDifference extends SimplePropertyExpression<Date, Timespan> {
@@ -46,15 +46,15 @@ public class ExprTimeDifference extends SimplePropertyExpression<Date, Timespan>
 	static {
 		Skript.registerExpression(ExprTimeDifference.class, Timespan.class, ExpressionType.PROPERTY,
 			"[the] time since %dates%",
-			"[the] [remaining] time [remaining] until %dates%");
+			"[the] (time [remaining]|remaining time) until %dates%");
 	}
 
 	private boolean sinceDate;
 
 	@Override
-	public boolean init(final Expression<?>[] exprs, final int matchedPattern, final Kleenean isDelayed, final SkriptParser.ParseResult parseResult) {
+	public boolean init(Expression<?>[] exprs, int matchedPattern, Kleenean isDelayed, ParseResult parseResult) {
 		sinceDate = matchedPattern == 0;
-		return true;
+		return super.init(exprs, matchedPattern, isDelayed, parseResult);
 	}
 
 	@Override
@@ -71,7 +71,7 @@ public class ExprTimeDifference extends SimplePropertyExpression<Date, Timespan>
 		 */
 		if (sinceDate ? (date.compareTo(now) < 1) : (date.compareTo(now) > -1))
 			return date.difference(now);
-		return null;
+		return new Timespan();
 	}
 
 	@Override
@@ -85,8 +85,8 @@ public class ExprTimeDifference extends SimplePropertyExpression<Date, Timespan>
 	}
 
 	@Override
-	public String toString(final @Nullable Event e, final boolean debug) {
-		return "the time " + (sinceDate ? "since " : "until ") + getExpr().toString(e, debug);
+	public String toString(@Nullable Event event, boolean debug) {
+		return "the time " + (sinceDate ? "since " : "until ") + getExpr().toString(event, debug);
 	}
 
 }
