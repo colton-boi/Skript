@@ -42,7 +42,7 @@ public class EffResetTitle extends Effect {
 	static {
 		Skript.registerEffect(EffResetTitle.class,
 				"reset [the] title[s] [of %players%]",
-				"reset [the] %players%'[s] title[s]");
+				"reset [the] %players%['[s]] title[s]");
 	}
 	
 	@SuppressWarnings("null")

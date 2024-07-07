@@ -60,7 +60,7 @@ public class ExprScoreboardTags extends SimpleExpression<String> {
 	static {
 		Skript.registerExpression(ExprScoreboardTags.class, String.class, ExpressionType.PROPERTY,
 			"[(all [[of] the]|the)] scoreboard tags of %entities%",
-			"%entities%'[s] scoreboard tags");
+			"%entities%['[s]] scoreboard tags");
 	}
 
 	@SuppressWarnings("null")

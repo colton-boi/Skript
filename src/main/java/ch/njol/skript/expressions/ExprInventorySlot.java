@@ -53,7 +53,7 @@ public class ExprInventorySlot extends SimpleExpression<Slot> {
 	
 	static {
 		Skript.registerExpression(ExprInventorySlot.class, Slot.class, ExpressionType.COMBINED,
-				"[the] slot[s] %numbers% of %inventory%", "%inventory%'[s] slot[s] %numbers%");
+				"[the] slot[s] %numbers% of %inventory%", "%inventory%['[s]] slot[s] %numbers%");
 	}
 
 	@SuppressWarnings("null")

@@ -55,7 +55,7 @@ import ch.njol.util.coll.CollectionUtils;
 public class ExprWorld extends PropertyExpression<Object, World> {
 
 	static {
-		Skript.registerExpression(ExprWorld.class, World.class, ExpressionType.PROPERTY, "[the] world [of %locations/entities/chunk%]", "%locations/entities/chunk%'[s] world");
+		Skript.registerExpression(ExprWorld.class, World.class, ExpressionType.PROPERTY, "[the] world [of %locations/entities/chunk%]", "%locations/entities/chunk%['[s]] world");
 	}
 	
 	@Override

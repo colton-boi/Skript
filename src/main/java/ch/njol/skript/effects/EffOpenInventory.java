@@ -50,7 +50,7 @@ public class EffOpenInventory extends Effect {
 	static {
 		Skript.registerEffect(EffOpenInventory.class,
 				"(open|show) ((0¦(crafting [table]|workbench)|1¦chest|2¦anvil|3¦hopper|4¦dropper|5¦dispenser) (view|window|inventory|)|%-inventory/inventorytype%) (to|for) %players%",
-				"close [the] inventory [view] (to|of|for) %players%", "close %players%'[s] inventory [view]");
+				"close [the] inventory [view] (to|of|for) %players%", "close %players%['[s]] inventory [view]");
 	}
 	
 	@Nullable

@@ -59,7 +59,7 @@ public class ExprLowestHighestSolidBlock extends SimplePropertyExpression<Locati
 	static {
 		Skript.registerExpression(ExprLowestHighestSolidBlock.class, Block.class, ExpressionType.PROPERTY,
 				"[the] (highest|:lowest) [solid] block (at|of) %locations%",
-				"%locations%'[s] (highest|:lowest) [solid] block"
+				"%locations%['[s]] (highest|:lowest) [solid] block"
 		);
 	}
 

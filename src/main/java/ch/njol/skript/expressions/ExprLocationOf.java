@@ -45,7 +45,7 @@ import ch.njol.util.Kleenean;
 @Since("")
 public class ExprLocationOf extends WrapperExpression<Location> {
 	static {
-		Skript.registerExpression(ExprLocationOf.class, Location.class, ExpressionType.PROPERTY, "(location|position) of %location%", "%location%'[s] (location|position)");
+		Skript.registerExpression(ExprLocationOf.class, Location.class, ExpressionType.PROPERTY, "(location|position) of %location%", "%location%['[s]] (location|position)");
 	}
 	
 	@SuppressWarnings({"unchecked", "null"})

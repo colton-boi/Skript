@@ -55,7 +55,7 @@ public class ExprTargetedBlock extends PropertyExpression<LivingEntity, Block> {
 
 	static {
 		Skript.registerExpression(ExprTargetedBlock.class, Block.class, ExpressionType.COMBINED,
-				"[the] [actual:(actual[ly]|exact)] target[ed] block[s] [of %livingentities%]", "%livingentities%'[s] [actual:(actual[ly]|exact)] target[ed] block[s]");
+				"[the] [actual:(actual[ly]|exact)] target[ed] block[s] [of %livingentities%]", "%livingentities%['[s]] [actual:(actual[ly]|exact)] target[ed] block[s]");
 	}
 
 	private boolean actual;

@@ -54,7 +54,7 @@ public class ExprItemCooldown extends SimpleExpression<Timespan> {
 	static {
 		Skript.registerExpression(ExprItemCooldown.class, Timespan.class, ExpressionType.COMBINED, 
 				"[the] [item] cooldown of %itemtypes% for %players%",
-				"%players%'[s] [item] cooldown for %itemtypes%");
+				"%players%['[s]] [item] cooldown for %itemtypes%");
 	}
 	
 	@SuppressWarnings("NotNullFieldNotInitialized")

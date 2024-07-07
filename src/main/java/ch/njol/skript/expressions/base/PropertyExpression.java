@@ -43,7 +43,7 @@ import java.util.Arrays;
 public abstract class PropertyExpression<F, T> extends SimpleExpression<T> {
 
 	/**
-	 * Registers an expression as {@link ExpressionType#PROPERTY} with the two default property patterns "property of %types%" and "%types%'[s] property"
+	 * Registers an expression as {@link ExpressionType#PROPERTY} with the two default property patterns "property of %types%" and "%types%['[s]] property"
 	 * 
 	 * @param expressionClass the PropertyExpression class being registered.
 	 * @param type the main expression type the property is based off of.
@@ -51,11 +51,11 @@ public abstract class PropertyExpression<F, T> extends SimpleExpression<T> {
 	 * @param fromType should be plural to support multiple objects but doesn't have to be.
 	 */
 	public static <T> void register(Class<? extends Expression<T>> expressionClass, Class<T> type, String property, String fromType) {
-		Skript.registerExpression(expressionClass, type, ExpressionType.PROPERTY, "[the] " + property + " of %" + fromType + "%", "%" + fromType + "%'[s] " + property);
+		Skript.registerExpression(expressionClass, type, ExpressionType.PROPERTY, "[the] " + property + " of %" + fromType + "%", "%" + fromType + "%['[s]] " + property);
 	}
 
 	/**
-	 * Registers an expression as {@link ExpressionType#PROPERTY} with the two default property patterns "property [of %types%]" and "%types%'[s] property"
+	 * Registers an expression as {@link ExpressionType#PROPERTY} with the two default property patterns "property [of %types%]" and "%types%['[s]] property"
 	 * This method also makes the expression type optional to force a default expression on the property expression.
 	 * 
 	 * @param expressionClass the PropertyExpression class being registered.
@@ -64,7 +64,7 @@ public abstract class PropertyExpression<F, T> extends SimpleExpression<T> {
 	 * @param fromType should be plural to support multiple objects but doesn't have to be.
 	 */
 	public static <T> void registerDefault(Class<? extends Expression<T>> expressionClass, Class<T> type, String property, String fromType) {
-		Skript.registerExpression(expressionClass, type, ExpressionType.PROPERTY, "[the] " + property + " [of %" + fromType + "%]", "%" + fromType + "%'[s] " + property);
+		Skript.registerExpression(expressionClass, type, ExpressionType.PROPERTY, "[the] " + property + " [of %" + fromType + "%]", "%" + fromType + "%['[s]] " + property);
 	}
 
 	@Nullable

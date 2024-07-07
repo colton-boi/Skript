@@ -50,13 +50,13 @@ public class CondIsHandRaised extends Condition {
 
 	static {
 		Skript.registerCondition(CondIsHandRaised.class,
-				"%livingentities%'[s] [:main] hand[s] (is|are) raised",
-				"%livingentities%'[s] [:main] hand[s] (isn't|is not|aren't|are not) raised",
+				"%livingentities%['[s]] [:main] hand[s] (is|are) raised",
+				"%livingentities%['[s]] [:main] hand[s] (isn't|is not|aren't|are not) raised",
 				"[:main] hand[s] of %livingentities% (is|are) raised",
 				"[:main] hand[s] of %livingentities% (isn't|is not|aren't|are not) raised",
 
-				"%livingentities%'[s] off[ |-]hand[s] (is|are) raised",
-				"%livingentities%'[s] off[ |-]hand[s] (isn't|is not|aren't|are not) raised",
+				"%livingentities%['[s]] off[ |-]hand[s] (is|are) raised",
+				"%livingentities%['[s]] off[ |-]hand[s] (isn't|is not|aren't|are not) raised",
 				"off[ |-]hand[s] of %livingentities% (is|are) raised",
 				"off[ |-]hand[s] of %livingentities% (isn't|is not|aren't|are not) raised"
 		);

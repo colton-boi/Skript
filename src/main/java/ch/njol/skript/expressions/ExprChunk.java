@@ -50,7 +50,7 @@ public class ExprChunk extends SimpleExpression<Chunk> {
 	static {
 		Skript.registerExpression(ExprChunk.class, Chunk.class, ExpressionType.COMBINED,
 			"[(all [[of] the]|the)] chunk[s] (of|%-directions%) %locations%",
-			"%locations%'[s] chunk[s]",
+			"%locations%['[s]] chunk[s]",
 			"[(all [[of] the]|the)] loaded chunks (of|in) %worlds%"
 		);
 	}

@@ -56,7 +56,7 @@ public class ExprMetadata<T> extends SimpleExpression<T> {
 	static {
 		Skript.registerExpression(ExprMetadata.class, Object.class, ExpressionType.PROPERTY,
 				"metadata [(value|tag)[s]] %strings% of %metadataholders%",
-				"%metadataholders%'[s] metadata [(value|tag)[s]] %string%"
+				"%metadataholders%['[s]] metadata [(value|tag)[s]] %string%"
 		);
 	}
 

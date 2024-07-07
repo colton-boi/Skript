@@ -73,7 +73,7 @@ public class ExprTarget extends PropertyExpression<LivingEntity, Entity> {
 	static {
 		Skript.registerExpression(ExprTarget.class, Entity.class, ExpressionType.PROPERTY,
 				"[the] target[[ed] %-*entitydata%] [of %livingentities%] [blocks:ignoring blocks] [[with|at] ray[ ]size %-number%]", // TODO add a where filter when extendable https://github.com/SkriptLang/Skript/issues/4856
-				"%livingentities%'[s] target[[ed] %-*entitydata%] [blocks:ignoring blocks] [[with|at] ray[ ]size %-number%]"
+				"%livingentities%['[s]] target[[ed] %-*entitydata%] [blocks:ignoring blocks] [[with|at] ray[ ]size %-number%]"
 		);
 	}
 
